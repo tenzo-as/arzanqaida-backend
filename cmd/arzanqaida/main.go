@@ -3,7 +3,6 @@ package main
 import (
 	"arzanqaida/internal/config"
 	"arzanqaida/internal/lib/logger/handlers/slogpretty"
-	"arzanqaida/internal/lib/logger/sl"
 	"log/slog"
 	"os"
 )
@@ -24,13 +23,6 @@ func main() {
 		slog.Any("cfg", cfg),
 		slog.Int("port", cfg.GRPC.Port),
 	)
-
-	var err error
-
-	if err != nil {
-		log.Error("error message", slog.String("error", err.Error()))
-		log.Error("error message", sl.Err(err))
-	}
 }
 
 func setupLogger(env string) *slog.Logger {
